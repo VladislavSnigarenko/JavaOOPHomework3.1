@@ -2,11 +2,6 @@ package Task_1;
 
 public class Student extends Person {
 
-	@Override
-	public String toString() {
-		return "Student : " + getFirstName() + ", " + getLastName() + ", " + getAge() + ", [card=" + card + ", course=" + course + "]";
-	}
-
 	private String card;
 	private Integer course;
 
@@ -40,6 +35,12 @@ public class Student extends Person {
 
 	public void setCourse(Integer course) {
 		this.course = course;
+	}
+
+	@Override
+	public String toString() {
+		return "Student : first name = " + getFirstName() + ", last name = " + getLastName() + ", age = " + getAge() + ", [card=" + card + ", course="
+				+ course + "]";
 	}
 
 }

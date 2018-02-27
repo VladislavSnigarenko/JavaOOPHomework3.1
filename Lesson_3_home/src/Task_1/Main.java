@@ -2,33 +2,64 @@ package Task_1;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MyException {
 
-		Group group_2_k = new Group("2k");
-		System.out.println(group_2_k);
+		// create new group
+		Group group = new Group("Math_2016_2A");
+		System.out.println(group); // group is empty
 
-		group_2_k.add(new Student("Белов", "Петр", 19, "KT-256879", 4));
-		System.out.println(group_2_k);
+		// create students
+		Student student1 = new Student("Belov", "Petr", 19, "KT-256879", 4);
+		Student student2 = new Student("Kuzminov", "Vladimir", 20, "KT-256015", 1);
+		Student student3 = new Student("Belov", "Andrey", 22, "KБ-250241", 2);
+		Student student4 = new Student("Nikitin", "Oleg", 17, "KА-250240", 3);
+		Student student5 = new Student("Volkov", "Gleb", 17, "KБ-250001", 2);
+		Student student6 = new Student("Belov", "Stac", 18, "KТ-290244", 4);
+		Student student7 = new Student("Samsonov", "Vlad", 20, "KТ-300841", 2);
+		Student student8 = new Student("Steblova", "Irina", 25, "KБ-110091", 5);
+		Student student9 = new Student("Elexina", "Tatyana", 20, "ЕЕ-120111", 2);
+		Student student10 = new Student("Nituzova", "Olga", 22, "TT-220201", 1);
+		Student student11 = new Student("Sharuta", "Andre", 21, "KБ-280123", 2);
+		Student student12 = new Student("Tomofeev", "Alex", 22, "KТ-300152", 2);
 		
-		group_2_k.add(new Student("Кузьминов", "Владимир", 20, "KT-256015", 1));
-		System.out.println(group_2_k);
-		
-		group_2_k.add(new Student("Белов", "Андрей", 22, "KБ-250241", 2));
-		System.out.println(group_2_k);
-		
-		
-		if ("Иван".compareTo("Петр") > 0)
-			System.out.println("+");
-		else
-			System.out.println("-");
+		// add student in group
+		try {
+			group.add(student1);
+			group.add(student2);
+			group.add(student3);
+			group.add(student4);
+			group.add(student5);
+			group.add(student6);
 
-		/*
-		if ("Иван".compareTo(n) > 0)
-			System.out.println("+");
-		else
-			System.out.println("-");
-		 */			
+			// output students from group
+			System.out.println(group); // output 6 students
 
+			group.add(student7);
+			group.add(student8);
+			group.add(student9);
+			group.add(student10);
+			group.add(student11); // Error - 11 student - not add
+		} catch (MyException e) {
+			System.out.println(e.getMessage());
+		}
+
+		// output students from group
+		System.out.println(group); // output all students (10)
+
+		// delete student from group
+		group.remove(student5);  // good - student exist in group
+		group.remove("KА-250240");  // good - student exist in group / Nikitin, Oleg
+		
+		// delete student from group
+		group.remove(student12); // bad - student not exist in group
+
+		// output students from group
+		System.out.println(group); // output all students (8)
+		
+		// search students
+		System.out.println("Search : " + group.Search("")); // not found
+		System.out.println("Search : " + group.Search("Titov")); // not found
+		System.out.println("Search : " + group.Search("Steblova")); // found Steblova, Irina, 25, "KБ-110091", 5
 	}
 
 }
